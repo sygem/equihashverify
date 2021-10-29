@@ -1,6 +1,6 @@
 {
     "name": "equihashverify",
-    "version": "0.0.11",
+    "version": "0.0.12",
     "description": "function to check whether an Equihash solution is valid",
     "main": "equihashverify",
     "scripts": {

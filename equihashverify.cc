@@ -32,31 +32,31 @@ void verify(const FunctionCallbackInfo<Value>& args) {
 
   if (args.Length() < 4) {
     do {
-        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Wrong number of arguments")));
+        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Wrong number of arguments").ToLocalChecked()));
         return;
     } while (0);
   }
 
   if (!args[3]->IsInt32() || !args[4]->IsInt32()) {
     do {
-        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Fouth and fifth parameters should be equihash parameters (n, k)")));
+        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Fouth and fifth parameters should be equihash parameters (n, k)").ToLocalChecked()));
         return;
     } while (0);
   }
 
   if (!args[2]->IsString()) {
     do {
-        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Third argument should be the personalization string.")));
+        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Third argument should be the personalization string.").ToLocalChecked()));
         return;
     } while (0);
   }
 
-  Local<Object> header = args[0]->ToObject(isolate);
-  Local<Object> solution = args[1]->ToObject(isolate);
+  Local<Object> header = args[0]->ToObject(isolate->GetCurrentContext()).ToLocalChecked();
+  Local<Object> solution = args[1]->ToObject(isolate->GetCurrentContext()).ToLocalChecked();
 
   if(!Buffer::HasInstance(header) || !Buffer::HasInstance(solution)) {
     do {
-        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "First two arguments should be buffer objects.")));
+        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "First two arguments should be buffer objects.").ToLocalChecked()));
         return;
     } while (0);
   }
