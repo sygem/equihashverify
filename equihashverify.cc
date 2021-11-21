@@ -39,7 +39,7 @@ void verify(const FunctionCallbackInfo<Value>& args) {
 
   if (!args[3]->IsInt32() || !args[4]->IsInt32()) {
     do {
-        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Fouth and fifth parameters should be equihash parameters (n, k)").ToLocalChecked()));
+        isolate->ThrowException(Exception::Error(String::NewFromUtf8(isolate, "Third and Fourth parameters should be equihash parameters (n, k)").ToLocalChecked()));
         return;
     } while (0);
   }
